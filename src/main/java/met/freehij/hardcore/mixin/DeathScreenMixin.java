@@ -1,6 +1,7 @@
 package met.freehij.hardcore.mixin;
 
 import met.freehij.hardcore.utils.Common;
+import net.minecraft.class_182;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -31,11 +32,14 @@ public class DeathScreenMixin extends Screen {
 
 	@Inject(at = @At("HEAD"), method = "buttonClicked", cancellable = true)
 	protected void buttonClicked(ButtonWidget button, CallbackInfo info) {
-		if (Common.getMinecraft().world.isRemote && Common.getModdedWorldProperties().isHardcore() && button.id == 2) {
+		if (!Common.getMinecraft().world.isRemote && Common.getModdedWorldProperties().isHardcore() && button.id == 2) {
 			info.cancel();
+			String worldName = ((WorldAccessor)Common.getMinecraft().world).getProperties().getName();
 			this.minecraft.setWorld(null);
 			this.minecraft.setScreen(new TitleScreen());
-			//TODO: remove world on death
+			class_182 saveLoader = Common.getMinecraft().method_2127();
+			saveLoader.method_1003();
+			saveLoader.method_1006(worldName);
 		}
 	}
 }
