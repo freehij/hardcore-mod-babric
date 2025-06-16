@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "met.freehij.hardcore.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "WorldAccessor",
+    "WorldPropertiesMixin"
+  ],
+  "client": [
+    "CreateWorldGuiMixin",
+    "DeathScreenMixin",
+    "InGameHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
