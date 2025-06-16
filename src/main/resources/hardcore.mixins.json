@@ -10,7 +10,9 @@
   "client": [
     "CreateWorldGuiMixin",
     "DeathScreenMixin",
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "MinecraftMixin",
+    "OptionsGuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1
