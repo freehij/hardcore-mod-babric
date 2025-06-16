@@ -5,6 +5,7 @@ import met.freehij.hardcore.utils.Common;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.option.Option;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,8 +32,8 @@ public class MinecraftMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "setWorld")
-    private void setWorld(World world, CallbackInfo ci) {
+    @Inject(at = @At("HEAD"), method = "method_2115")
+    private void setWorld(World world, String worldName, PlayerEntity player, CallbackInfo ci) {
         if (world == null) this.options.difficulty = Hardcore.trueDifficulty;
     }
 }

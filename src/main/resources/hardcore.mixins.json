@@ -4,6 +4,7 @@
   "package": "met.freehij.hardcore.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "LoginPacketMixin",
     "WorldAccessor",
     "WorldPropertiesMixin"
   ],
