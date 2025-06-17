@@ -4,6 +4,7 @@
   "package": "met.freehij.hardcore.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "LoginHelloPacketMixin",
     "WorldAccessor",
     "WorldPropertiesMixin"
   ],
@@ -16,5 +17,8 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "server": [
+    "MinecraftServerMixin"
+  ]
 }

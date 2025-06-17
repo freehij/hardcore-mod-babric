@@ -9,7 +9,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -26,7 +25,8 @@ public class MinecraftMixin {
 
     @Inject(at = @At("TAIL"), method = "tick")
     private void tick(CallbackInfo ci) {
-        if (world != null && Common.getModdedWorldProperties().isHardcore()) {
+        if (world != null && (Common.getModdedWorldProperties().isHardcore() || Hardcore.hardcore)) {
+            Common.getModdedWorldProperties().setHardcore(true);
             if (this.options.difficulty != 3) Hardcore.trueDifficulty = this.options.difficulty;
             this.options.difficulty = 3;
         }
