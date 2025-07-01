@@ -23,6 +23,7 @@ public class MinecraftServerMixin {
             for (class_73 world : field_2841) {
                 ((IWorldProperties)((WorldAccessor)world).getProperties()).setHardcore(true);
             }
+            Hardcore.hardcore = true;
         }
     }
 
